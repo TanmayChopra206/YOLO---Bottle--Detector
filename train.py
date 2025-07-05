@@ -6,7 +6,6 @@ project = rf.workspace("bottle-recognition").project("my-first-project-qlia3")
 version = project.version(2)
 dataset = version.download("yolov8")
 
-# Part 2: Your code to train the model using the downloaded data
 from ultralytics import YOLO
 
 # Load a base YOLO model to train from
