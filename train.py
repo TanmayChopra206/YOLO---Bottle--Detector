@@ -1,10 +1,14 @@
 
 from roboflow import Roboflow
+from dotenv import load_dotenv
+import os
 
-rf = Roboflow(api_key="ozNTwfqSsoVyHoIh4UlB")
+load_dotenv()
+
+
+rf = Roboflow(api_key=os.getenv("ROBOFLOW_API_KEY"))
 project = rf.workspace("bottle-recognition").project("my-first-project-qlia3")
-version = project.version(2)
-dataset = version.download("yolov8")
+dataset = project.version(2).download("yolov8")
 
 from ultralytics import YOLO
 
