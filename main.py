@@ -1,12 +1,11 @@
 import cv2
 from ultralytics import YOLO
 
-# Load your custom-trained YOLOv8 model from the local .pt file
-# Make sure 'best.pt' is in the same folder as this script
+
 model = YOLO('best.pt')
 
-# Initialize the Webcam
-# 0 is usually the default built-in webcam
+# Initialise the Webcam
+
 cap = cv2.VideoCapture(0)
 if not cap.isOpened():
     raise IOError("Cannot open webcam")
@@ -18,7 +17,6 @@ while True:
         break
 
     # Run YOLOv8 inference on the frame
-    # verbose=False will hide the detailed prediction output in the console
     results = model.predict(frame, conf = 0.1, verbose=False)
 
     # Get the first result object, which contains the predictions
@@ -48,6 +46,6 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# Release the webcam and destroy all OpenCV windows
+
 cap.release()
 cv2.destroyAllWindows()
